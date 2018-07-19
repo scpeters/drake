@@ -429,16 +429,16 @@ GTEST_TEST(SdfParser, IncludeTags) {
   // There should be joint with the name "slider".
   EXPECT_TRUE(plant.HasJointNamed("slider", robot1_model));
 
-  // There should be a model instance with the name "robot2".
-  EXPECT_TRUE(plant.HasModelInstanceNamed("robot2"));
-  ModelInstanceIndex robot2_model = plant.GetModelInstanceByName("robot2");
+  // There should be a model instance with the name "robot3".
+  EXPECT_TRUE(plant.HasModelInstanceNamed("robot3"));
+  ModelInstanceIndex robot3_model = plant.GetModelInstanceByName("robot3");
 
-  // There should be a body with the name "base_link".
-  EXPECT_TRUE(plant.HasBodyNamed("base_link", robot2_model));
-  // There should be another body with the name "moving_link".
-  EXPECT_TRUE(plant.HasBodyNamed("moving_link", robot2_model));
-  // There should be joint with the name "slider".
-  EXPECT_TRUE(plant.HasJointNamed("slider", robot2_model));
+  // There should be a body with the name "robot3_base_link".
+  EXPECT_TRUE(plant.HasBodyNamed("robot3_base_link", robot3_model));
+  // There should be another body with the name "robot3_moving_link".
+  EXPECT_TRUE(plant.HasBodyNamed("robot3_moving_link", robot3_model));
+  // There should be joint with the name "robot3_slider".
+  EXPECT_TRUE(plant.HasJointNamed("robot3_slider", robot3_model));
 
   // There should be a model instance with the name "weld_robots".
   EXPECT_TRUE(plant.HasModelInstanceNamed("weld_models"));

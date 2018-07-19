@@ -415,14 +415,13 @@ void AddLinksFromSpecification(
 // specification object.
 ModelInstanceIndex AddModelFromSpecification(
     const sdf::Model& model,
-    const std::string& model_name,
     multibody_plant::MultibodyPlant<double>* plant,
     geometry::SceneGraph<double>* scene_graph,
     const parsers::PackageMap& package_map,
     const std::string& root_dir) {
 
   const ModelInstanceIndex model_instance =
-    plant->AddModelInstance(model_name);
+    plant->AddModelInstance(model.Name());
 
   AddLinksFromSpecification(
       model_instance, model, plant, scene_graph, package_map, root_dir);
@@ -520,7 +519,7 @@ std::vector<ModelInstanceIndex> AddModelsFromSdfFile(
       // Get the model.
       const sdf::Model& model = *root.ModelByIndex(i);
       model_instances.push_back(AddModelFromSpecification(
-            model, model.Name(), plant, scene_graph, package_map, root_dir));
+            model, plant, scene_graph, package_map, root_dir));
     }
   } else {
     // Load the world and all the models in the world.
@@ -531,7 +530,7 @@ std::vector<ModelInstanceIndex> AddModelsFromSdfFile(
       // Get the model.
       const sdf::Model& model = *world.ModelByIndex(model_index);
       model_instances.push_back(AddModelFromSpecification(
-            model, model.Name(), plant, scene_graph, package_map, root_dir));
+            model, plant, scene_graph, package_map, root_dir));
     }
   }
 
